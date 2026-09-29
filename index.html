@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10120f">
+  <title>Dungeon Crawler</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app">
+    <section id="menu" class="screen menu-screen">
+      <div class="menu-vignette"></div>
+      <div class="menu-content">
+        <div class="brand-mark" aria-hidden="true">✦</div>
+        <p class="eyebrow">A tiny adventure into the dark</p>
+        <h1>DUNGEON<br><span>CRAWLER</span></h1>
+        <p class="menu-copy">One more room. One better blade. How deep can you go?</p>
+        <div class="menu-actions">
+          <button id="playButton" class="button primary">▶ &nbsp; PLAY</button>
+          <button id="guideButton" class="button secondary">? &nbsp; GUIDE</button>
+        </div>
+        <p class="menu-foot">No account. No ads. Just the dungeon.</p>
+      </div>
+      <div class="menu-torch left" aria-hidden="true"><span></span></div>
+      <div class="menu-torch right" aria-hidden="true"><span></span></div>
+    </section>
+
+    <section id="game" class="screen game-screen hidden" aria-label="Dungeon game">
+      <div class="game-shell">
+        <header class="hud">
+          <div class="hud-location"><span class="hud-rune">✦</span><div><strong id="roomName">THE ENTRY</strong><small id="depthLabel">DEPTH 0 · ROOMS 1</small></div></div>
+          <div class="hud-bars">
+            <div class="bar-row"><span>HP</span><div class="bar-track"><div id="healthFill" class="bar-fill health"></div></div><b id="healthValue">100 / 100</b></div>
+            <div class="bar-row"><span>EN</span><div class="bar-track"><div id="energyFill" class="bar-fill energy"></div></div><b id="energyValue">100 / 100</b></div>
+          </div>
+          <span id="shardCount" class="shard-count" aria-live="polite">✦ 0</span>
+          <button id="shopButton" class="shop-button" title="Shop (P)">SHOP <kbd>P</kbd></button>
+          <button id="menuButton" class="icon-button" title="Menu" aria-label="Menu">☰</button>
+        </header>
+        <div class="game-stage">
+          <canvas id="gameCanvas" width="960" height="600" aria-label="Top down dungeon room"></canvas>
+          <div id="toast" class="toast" role="status" aria-live="polite"></div>
+          <div id="prompt" class="prompt hidden"></div>
+          <div class="stage-bottom">
+            <div id="roomHint" class="room-hint">Find the chest. Claim your first weapon.</div>
+            <button id="inventoryButton" class="inventory-button" title="Inventory (I)">◈ &nbsp; INVENTORY <kbd>I</kbd></button>
+          </div>
+        </div>
+        <footer class="game-footer"><span><kbd>W A S D</kbd> / <kbd>↑ ← ↓ →</kbd> MOVE</span><span><kbd>CLICK</kbd> ATTACK</span><span><kbd>B</kbd> BLOCK</span><span><kbd>E</kbd> INTERACT</span><span><kbd>H</kbd> HEAL</span><span><kbd>Q</kbd> SPECIAL</span><span><kbd>P</kbd> SHOP</span></footer>
+      </div>
+      <div class="mobile-controls" aria-label="Touch controls">
+        <div id="touchJoystick" class="joystick" aria-label="Movement joystick"><div id="joystickKnob" class="joystick-knob"></div></div>
+        <div class="action-pad">
+          <button id="touchInteract" class="touch-small" aria-label="Open or collect"><span aria-hidden="true">◇</span><small>OPEN</small></button>
+          <button id="touchBlock" class="touch-small" aria-label="Hold to block"><span aria-hidden="true">⬟</span><small>BLOCK</small></button>
+          <button id="touchAttack" class="touch-attack" aria-label="Attack"><span aria-hidden="true">⚔</span><small>ATTACK</small></button>
+          <button id="touchHeal" class="touch-small touch-heal" aria-label="Use healing item"><span aria-hidden="true">✚</span><small>HEAL</small></button>
+          <button id="touchSpecial" class="touch-small touch-special" aria-label="Use special item"><span aria-hidden="true">✦</span><small>MAGIC</small></button>
+        </div>
+      </div>
+    </section>
+
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-card"><button id="closeModal" class="modal-close" aria-label="Close">×</button><div id="modalContent"></div></div></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
